@@ -1,3 +1,6 @@
+$ pip install plotly_express==0.4.0
+$ pip install xlrd == 1.2.0
+$ pip install openpyxl
 import pandas as pd
 import openpyxl
 from openpyxl import reader, load_workbook,Workbook
