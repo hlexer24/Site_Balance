@@ -1,6 +1,5 @@
 import pandas as pd
 import plotly.express as px
-import pandas as pd
 import openpyxl
 from openpyxl import load_workbook
 from openpyxl.styles import Font
