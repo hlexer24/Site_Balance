@@ -1,10 +1,6 @@
 import pandas as pd
-import plotly.express as px
 import openpyxl
 from openpyxl import load_workbook
-from openpyxl.styles import Font
-from openpyxl.chart import BarChart, Reference
-from openpyxl.utils import FORMULAE
 from openpyxl import Workbook
 import string
 import re
