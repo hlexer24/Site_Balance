@@ -1,18 +1,7 @@
 import streamlit as st
 import pandas as pd
+pip install plotly 
 import plotly.express as px
-
-st.set_page_config(page_title='Site Balance')
-st.title('Site Balance')
-st.subheader("Instructions:")
-st.subheader("In the first upload box, select the CND File. In the second upload box, select you downloaded file from Ops Tracker")
-st.subheader("A File Name Site Automation Calculation will be generated to your User File, please locate the xlsx file in your user folder")
-st.subheader("Now you can choose either to view the Excel file on your desktop or you can upload this file and it will be displayed on the website.")
-
-uploaded_file1 = st.file_uploader('Choose a XLSX File', type='xlsx')
-uploaded_file2 = st.file_uploader('Choose another XLSX File', type='xlsx')
-
-
 import pandas as pd
 import openpyxl
 from openpyxl import load_workbook
@@ -26,6 +15,15 @@ from operator import *
 import xlsxwriter
 import xlwt
 
+st.set_page_config(page_title='Site Balance')
+st.title('Site Balance')
+st.subheader("Instructions:")
+st.subheader("In the first upload box, select the CND File. In the second upload box, select you downloaded file from Ops Tracker")
+st.subheader("A File Name Site Automation Calculation will be generated to your User File, please locate the xlsx file in your user folder")
+st.subheader("Now you can choose either to view the Excel file on your desktop or you can upload this file and it will be displayed on the website.")
+
+uploaded_file1 = st.file_uploader('Choose a XLSX File', type='xlsx')
+uploaded_file2 = st.file_uploader('Choose another XLSX File', type='xlsx')
 
 i = 1
 
