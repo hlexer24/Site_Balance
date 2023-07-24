@@ -1,6 +1,6 @@
 streamlit
-pandas
-openpyxl
-plotly
-xlsxwriter
-xlwt
+pip install pandas
+pip install openpyxl
+pip install plotly
+pip install xlsxwriter
+pip install xlwt
