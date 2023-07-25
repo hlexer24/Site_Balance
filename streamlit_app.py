@@ -10,6 +10,7 @@ st.subheader("A File Name Site Automation Calculation will be generated to your 
 st.subheader("Now you can choose either to view the Excel file on your desktop or you can upload this file and it will be displayed on the website.")
 
 user_input = st.text_input('Please Enter your username')
+st.write(user_input)
 uploaded_file1 = st.file_uploader('Choose a XLSX File', type='xlsx')
 uploaded_file2 = st.file_uploader('Choose another XLSX File', type='xlsx')
 
