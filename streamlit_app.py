@@ -1,13 +1,6 @@
-import pandas as pd
-import openpyxl
-from openpyxl import reader, load_workbook,Workbook
-from openpyxl.styles import Font
-import string
-import re
-from operator import *
-import xlsxwriter
-import xlwt
 import streamlit as st
+import pandas as pd
+import plotly.express as px
 
 st.set_page_config(page_title='Site Balance')
 st.title('Site Balance')
@@ -18,6 +11,22 @@ st.subheader("Now you can choose either to view the Excel file on your desktop o
 
 uploaded_file1 = st.file_uploader('Choose a XLSX File', type='xlsx')
 uploaded_file2 = st.file_uploader('Choose another XLSX File', type='xlsx')
+
+
+import pandas as pd
+import openpyxl
+from openpyxl import load_workbook
+from openpyxl.styles import Font
+#from openpyxl.chart import BarChart, Reference
+#from openpyxl.utils import FORMULAE
+from openpyxl import Workbook
+import string
+import re
+from operator import *
+import xlsxwriter
+import xlwt
+import os.path 
+
 
 i = 1
 
@@ -217,8 +226,16 @@ sheet3.column_dimensions['D'].width = 20
 sheet3['B106'] = 'Total'
 sheet3['C106'] = '=SUM(C2:C105)'
 
-wb.save('Site Automation Calculation.xlsx')
-wb = Workbook("Site Automation Calculation.xlsx")
+username = os.getlogin()
+save_path = f'C:\\Users\\{username}\\Desktop'
+name_of_file = 'Site Automation Calculation'
+completeName = os.path.join(save_path, name_of_file+".xlsx")
+wb.save(completeName)
+wb = Workbook(completeName)
 
 uploaded_file3 = st.file_uploader('Please Upload the Calculated Excel File', type='xlsx')
-df5 = pd.DataFrame(uploaded_file3)
+df5 = pd.read_excel(uploaded_file3)
+df6 = pd.read_excel(uploaded_file3,sheet_name='Total')
+
+st.dataframe(df5.head())
+st.dataframe(df6.head())
