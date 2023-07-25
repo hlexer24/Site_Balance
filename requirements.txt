@@ -1,5 +1,5 @@
 streamlit
-pip install pandas
+pandas
 pip install openpyxl
 pip install plotly
 pip install xlsxwriter
