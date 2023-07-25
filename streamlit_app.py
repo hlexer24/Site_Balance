@@ -226,12 +226,17 @@ sheet3.column_dimensions['D'].width = 20
 sheet3['B106'] = 'Total'
 sheet3['C106'] = '=SUM(C2:C105)'
 
+#username = os.getlogin()
+#save_path = f'C:\\Users\\{username}\\Desktop'
+#name_of_file = 'Site Automation Calculation'
+#completeName = os.path.join(save_path, name_of_file+".xlsx")
+wb.save('test2.xlsx')
+wb = Workbook("test2.xlsx")
+
 username = os.getlogin()
 save_path = f'C:\\Users\\{username}\\Desktop'
 name_of_file = 'Site Automation Calculation'
-completeName = os.path.join(save_path, name_of_file+".xlsx")
-wb.save(completeName)
-wb = Workbook(completeName)
+completeName = os.path.join(save_path, 'test2.xlsx')
 
 uploaded_file3 = st.file_uploader('Please Upload the Calculated Excel File', type='xlsx')
 df5 = pd.read_excel(uploaded_file3)
