@@ -232,8 +232,6 @@ sheet3['C106'] = '=SUM(C2:C105)'
 #save_path = f'C:\\Users\\{username}\\Desktop'
 #name_of_file = 'Site Automation Calculation'
 #completeName = os.path.join(save_path, name_of_file+".xlsx")
-wb.save(f'C:\\Users\\{user_input}\\Desktop\\Site Automation Calculation.xlsx')
+wb.save(os.path.expanduser("~/Desktop/Site Automation Calculation.xlsx"))
+    #f'C:\\Users\\{user_input}\\Desktop\\Site Automation Calculation.xlsx')
 wb = Workbook("Site Automation Calculation.xlsx")
-
-dir_name = os.path.abspath(os.path.dirname(__file__))
-location = os.path.join(dir_name,'Site Automation Calculation.xlsx')
