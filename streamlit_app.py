@@ -19,6 +19,8 @@ import pandas as pd
 import openpyxl
 from openpyxl import load_workbook
 from openpyxl.styles import Font
+#from openpyxl.chart import BarChart, Reference
+#from openpyxl.utils import FORMULAE
 from openpyxl import Workbook
 import string
 import re
@@ -226,5 +228,12 @@ sheet3.column_dimensions['D'].width = 20
 sheet3['B106'] = 'Total'
 sheet3['C106'] = '=SUM(C2:C105)'
 
+#username = os.getlogin()
+#save_path = f'C:\\Users\\{username}\\Desktop'
+#name_of_file = 'Site Automation Calculation'
+#completeName = os.path.join(save_path, name_of_file+".xlsx")
 wb.save(f'C:\\Users\\{user_input}\\Desktop\\Site Automation Calculation.xlsx')
 wb = Workbook("Site Automation Calculation.xlsx")
+
+dir_name = os.path.abspath(os.path.dirname(__file__))
+location = os.path.join(dir_name,'Site Automation Calculation.xlsx')
