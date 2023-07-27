@@ -9,7 +9,7 @@ st.subheader("In the first upload box, select the CND File. In the second upload
 st.subheader("A File Name Site Automation Calculation will be generated to your User File, please locate the xlsx file in your user folder")
 st.subheader("Now you can choose either to view the Excel file on your desktop or you can upload this file and it will be displayed on the website.")
 
-user_input = st.text_input('Please Enter your username')
+user_input = st.text_input('Please Enter your file location')
 st.write(user_input)
 uploaded_file1 = st.file_uploader('Choose a XLSX File', type='xlsx')
 uploaded_file2 = st.file_uploader('Choose another XLSX File', type='xlsx')
@@ -232,6 +232,12 @@ sheet3['C106'] = '=SUM(C2:C105)'
 #save_path = f'C:\\Users\\{username}\\Desktop'
 #name_of_file = 'Site Automation Calculation'
 #completeName = os.path.join(save_path, name_of_file+".xlsx")
-wb.save(os.path.expanduser("~/Desktop/Site Automation Calculation.xlsx"))
+
+wb.save(user_input)
     #f'C:\\Users\\{user_input}\\Desktop\\Site Automation Calculation.xlsx')
-wb = Workbook("Site Automation Calculation.xlsx")
+wb = Workbook(user_input)
+
+
+wb.close()
+
+
