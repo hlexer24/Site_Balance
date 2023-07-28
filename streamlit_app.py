@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import io
+
+buffer =  io.BytesIO()
 
 st.set_page_config(page_title='Site Balance')
 st.title('Site Balance')
@@ -9,8 +12,6 @@ st.subheader("In the first upload box, select the CND File. In the second upload
 st.subheader("A File Name Site Automation Calculation will be generated to your User File, please locate the xlsx file in your user folder")
 st.subheader("Now you can choose either to view the Excel file on your desktop or you can upload this file and it will be displayed on the website.")
 
-user_input = st.text_input('Please Enter your file location')
-st.write(user_input)
 uploaded_file1 = st.file_uploader('Choose a XLSX File', type='xlsx')
 uploaded_file2 = st.file_uploader('Choose another XLSX File', type='xlsx')
 
@@ -233,11 +234,22 @@ sheet3['C106'] = '=SUM(C2:C105)'
 #name_of_file = 'Site Automation Calculation'
 #completeName = os.path.join(save_path, name_of_file+".xlsx")
 
-wb.save(user_input)
+wb.save('Site Automation Calculation.xlsx ')
     #f'C:\\Users\\{user_input}\\Desktop\\Site Automation Calculation.xlsx')
-wb = Workbook(user_input)
-
-
+wb = Workbook('Site Automation Calculation.xlsx')
 wb.close()
 
 
+excel_file3 = pd.read_excel('Site Automation Calculation.xlsx', sheet_name='Manager')
+excel_file4 = pd.read_excel('Site Automation Calculation.xlsx',sheet_name='Total')
+
+df5 = pd.DataFrame(excel_file3)
+df6 = pd.DataFrame(excel_file4)
+st.write(df5)
+st.write(df6)
+
+
+with pd.ExcelWriter(buffer,engine='xlsxwriter') as writer:
+    df5.to_excel(writer,sheet_name='Manager',index=False)
+    df6.to_excel(writer,sheet_name='Total',index=False)
+    download = st.download_button(label='Download Data',data =buffer,file_name='Data.xlsx',mime='application/vnd.ms-excel')
