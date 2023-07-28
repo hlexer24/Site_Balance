@@ -237,19 +237,27 @@ sheet3['C106'] = '=SUM(C2:C105)'
 wb.save('Site Automation Calculation.xlsx ')
     #f'C:\\Users\\{user_input}\\Desktop\\Site Automation Calculation.xlsx')
 wb = Workbook('Site Automation Calculation.xlsx')
+wb.save('Site Automation Calculation.html')
 wb.close()
+
 
 
 excel_file3 = pd.read_excel('Site Automation Calculation.xlsx', sheet_name='Manager')
 excel_file4 = pd.read_excel('Site Automation Calculation.xlsx',sheet_name='Total')
 
 df5 = pd.DataFrame(excel_file3)
+test = df5.astype(str)
 df6 = pd.DataFrame(excel_file4)
-st.write(df5)
-st.write(df6)
+test2 = df6.astype(str)
+st.write(test)
+st.write(test2)
 
 
 with pd.ExcelWriter(buffer,engine='xlsxwriter') as writer:
-    df5.to_excel(writer,sheet_name='Manager',index=False)
-    df6.to_excel(writer,sheet_name='Total',index=False)
+    test.to_excel(writer,sheet_name='Manager',index=False)
+    test2.to_excel(writer,sheet_name='Total',index=False)
     download = st.download_button(label='Download Data',data =buffer,file_name='Data.xlsx',mime='application/vnd.ms-excel')
+
+
+
+
