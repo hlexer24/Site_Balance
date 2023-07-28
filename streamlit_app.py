@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import io
+import base64
 
-buffer =  io.BytesIO()
 
 st.set_page_config(page_title='Site Balance')
 st.title('Site Balance')
@@ -249,15 +249,12 @@ df5 = pd.DataFrame(excel_file3)
 test = df5.astype(str)
 df6 = pd.DataFrame(excel_file4)
 test2 = df6.astype(str)
-st.write(test)
-st.write(test2)
 
 
-with pd.ExcelWriter(buffer,engine='xlsxwriter') as writer:
-    test.to_excel(writer,sheet_name='Manager',index=False)
-    test2.to_excel(writer,sheet_name='Total',index=False)
-    download = st.download_button(label='Download Data',data =buffer,file_name='Data.xlsx',mime='application/vnd.ms-excel')
-
-
-
+towrite = io.BytesIO()
+downloaded_file = excel_file3.to_excel(towrite,sheet_name="Manager",index=False, header=True)
+towrite.seek(0)  # reset pointer
+b64 = base64.b64encode(towrite.read()).decode()  # some strings
+linko= f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="myfilename.xlsx">Download excel file</a>'
+st.markdown(linko, unsafe_allow_html=True)
 
